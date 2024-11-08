@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hotel Guestbook</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .row.content {height: 600px}
+    
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+    
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+
+      .row.content {
+        height: auto;
+    } 
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row content">
+
+        <div class="col-sm-3 sidenav">
+        <h4>Hotel Guestbook</h4>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/newmessage">Add Entry</a></li>
+            <li class="nav-item"><a class="nav-link" href="/guestbook">View Guestbook</a></li>
+        </ul><br>
+        </div>
+
+</div>
+
+<footer class="container-fluid">
+  <p>App by Charlotte Busse</p>
+</footer>
+
+</body>
+</html>

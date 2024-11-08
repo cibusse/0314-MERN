@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New Message</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/guestbook.css">
+</head>
+<body class="container mt-5">
+  <button class="btn btn-link" onclick="history.back()"> &#8592;Go Back</button>
+  <h3 class="mb-4">Leave a message</h3>
+
+  <form id="messageForm" class="mb-4" action="/ajaxmessage">
+    <div class="form-group">
+      <input type="text" id="username" name="username" placeholder="Name" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <input type="text" id="country" name="country" placeholder="Country" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <textarea id="message" name="message" placeholder="Message" class="form-control" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+  </form>
+
+  <div id="messageTable"></div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    document.getElementById('messageForm').addEventListener('submit', function(event) {
+      event.preventDefault(); 
+
+      const formData = {
+        username: document.getElementById('username').value,
+        country: document.getElementById('country').value,
+        message: document.getElementById('message').value
+      };
+
+      fetch('/ajaxmessage', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.text())
+      .then(data => {
+
+        document.getElementById('messageTable').innerHTML = data;
+      })
+      .catch(error => console.error('Error:', error));
+    });
+  </script>
+</body>
+</html>
